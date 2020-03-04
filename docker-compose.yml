@@ -3,12 +3,15 @@ version: '3'
 services:
   db:
     image: postgres
+    environment:
+      POSTGRES_PASSWORD: Parole#Runis
+      POSTGRES_USER: postgres
   web:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8990
+    command: python3 manage.py runserver 0.0.0.0:80
     volumes:
       - .:/django-docker
     ports:
-      - "8990:8990"
+      - "80:80"
     depends_on:
       - db
